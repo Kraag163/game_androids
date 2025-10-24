@@ -20,7 +20,7 @@ class Player(CircleShape):
 
     def draw(self, screen):
         # sub-classes must override
-        pygame.draw.polygon(screen, (255, 255, 255), self.triangle(), width=2)
+        pygame.draw.polygon(screen, (255, 255, 255), self.triangle(), width=0)
 
     def rotate(self, dt):
         self.rotation += PLAYER_TURN_SPEED * dt
@@ -36,6 +36,7 @@ class Player(CircleShape):
             self.shoot_timer = PLAYER_SHOOT_COOLDOWN
             shot = Shot(self.position[0], self.position[1])
             shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+            
 
     def update(self, dt):
         self.shoot_timer -= dt
